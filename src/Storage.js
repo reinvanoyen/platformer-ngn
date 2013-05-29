@@ -1,5 +1,6 @@
 var Storage = Base.extend( {
-	_objects : {},
+
+	_objects: {},
 	add: function( k, v )
 	{
 		this._objects[ k ] = v;
