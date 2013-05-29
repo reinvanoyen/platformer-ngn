@@ -1,0 +1,1 @@
+var ActiveObjectStorage = Storage.extend();

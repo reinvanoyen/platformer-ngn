@@ -1,0 +1,2 @@
+var Player = ActiveObject.extend( {
+} );
