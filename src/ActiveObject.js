@@ -5,12 +5,15 @@ var ActiveObject = Base.extend( {
 		this.vy = 1;
 		this.vx = 0;
 		this.gravity = 20;
-		this.weight = 0.3;
+		this.weight = 0.4;
+		this.vx_damage = 0;
 	},
 	set_texture: function( path )
 	{
 		this.texture = PIXI.Texture.fromImage( path );
 		this.sprite = new PIXI.Sprite( this.texture );
+		this.sprite.anchor.x = 0.5;
+		this.sprite.anchor.y = 1;
 	},
 	set_position: function( x, y )
 	{
@@ -19,6 +22,18 @@ var ActiveObject = Base.extend( {
 			this.sprite.position.x = x;
 			this.sprite.position.y = y;
 		}
+	},
+	get_position: function()
+	{
+		return this.sprite.position;
+	},
+	get_rect_bounds: function()
+	{
+		return new PIXI.Rectangle( this.sprite.position.x, this.sprite.position.y, this.sprite.width, this.sprite.height );
+	},
+	set_rotation: function( angle )
+	{
+		this.sprite.rotation = angle;
 	},
 	update: function()
 	{
@@ -31,7 +46,7 @@ var ActiveObject = Base.extend( {
 	move: function()
 	{
 		// Put gravity into effect
-		if( this.vy < this.gravity && this.vy !== 0 )
+		if( this.vy < this.gravity )
 		{
 			this.vy += this.weight;
 		}
@@ -39,4 +54,5 @@ var ActiveObject = Base.extend( {
 		this.sprite.position.y += this.vy;
 		this.sprite.position.x += this.vx;
 	}
+	
 } );
