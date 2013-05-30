@@ -1,10 +1,21 @@
 var Level = Base.extend( {
 	
 	level_data: {},
-	load: function( level_data )
+	load: function( level, callback )
 	{
-		this.level_data = level_data;
-		this.is_loaded = true;
+		var that = this;
+		
+		$.ajax( {
+			url: 'levels/' + level + '.lvl',
+			dataType: 'json',
+			success: function( data )
+			{
+				that.level_data = data;
+				that.is_loaded = true;
+				callback();
+			}
+		} );
+		
 	},
 	update: function()
 	{
