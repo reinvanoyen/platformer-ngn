@@ -9,13 +9,10 @@ var Game = {
 		this.stage = new PIXI.Stage( 0x66FF99 );
 		this.renderer = PIXI.autoDetectRenderer( 800, 600 );
 		
-		this.active_objects = new ActiveObjectStorage;
 		this.input_manager = new InputManager;
+		this.world = new World;
 		
 		document.body.appendChild( this.renderer.view );
-		
-		this.active_objects.add( 'player', new Player( 200, 20 ) );
-		this.active_objects.get( 'player' ).draw_to_stage( this.stage );
 	},
 	start: function()
 	{
@@ -32,7 +29,7 @@ var Game = {
 	},
 	update: function()
 	{
-		this.active_objects.update_all();
+		this.world.update();
 	},
 	draw: function()
 	{
