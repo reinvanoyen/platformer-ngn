@@ -13,6 +13,7 @@
 <body>
 	<script src="3p/pixi.js"></script>
 	<script src="3p/base.js"></script>
+	<script src="3p/jquery-1.10.0.min.js"></script>
 	<script src="src/Game.js"></script>
 	<script src="src/World.js"></script>
 	<script src="src/Level.js"></script>
@@ -25,8 +26,11 @@
 	<script src="src/CollisionObserver.js"></script>
 	<script src="src/Hud.js"></script>
 	<script>
-		Game.create();
-		Game.start();
+		$( document ).ready( function()
+		{
+			Game.create();
+			Game.start();
+		} );
 	</script>
 </body>
 </html>
