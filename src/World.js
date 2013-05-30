@@ -2,12 +2,10 @@ var World = Base.extend( {
 	
 	constructor: function()
 	{
-		this.collision_observer = new CollisionObserver;
+		this.level = new Level;
 		this.active_objects = new ActiveObjectStorage;
 		
 		var that = this;
-		
-		this.level = new Level;
 		
 		var prompt = window.prompt( 'Load level', 'example_1' );
 		
@@ -17,14 +15,18 @@ var World = Base.extend( {
 			{
 				that.level.draw();
 				that.active_objects.add( 'player', new Player( 300, 0 ) );
+				that.collision_observer = new CollisionObserver;
 			} );
 		}
 	},
 	update: function()
 	{
-		this.level.update();
-		this.active_objects.update_all();
-		this.collision_observer.check_collisions();
+		if( this.level.is_loaded )
+		{
+			this.level.update();
+			this.active_objects.update_all();
+			this.collision_observer.check_collisions();
+		}
 	}
 	
 } );

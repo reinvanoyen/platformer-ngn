@@ -6,7 +6,7 @@ var ActiveObject = Base.extend( {
 		this.vx = 0;
 		this.gravity = 20;
 		this.weight = 0.9;
-		this.bounce_factor = 0;
+		this.bounce_factor = 0.3;
 		this.vx_dmg = 0;
 	},
 	set_texture: function( path )
