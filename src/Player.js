@@ -3,17 +3,19 @@ var Player = ActiveObject.extend( {
 	constructor: function( x, y )
 	{
 		this.base();
-		this.set_texture( "sprites/bunny.png" );
+		this.set_texture( "sprites/player.png" );
 		this.set_position( x, y );
 		this.draw( Game.stage );
 	},
 	update: function()
 	{
+		this.vx = 0;
+		
 		if( this.vy === 0 )
 		{
 			if( Game.input_manager.is_key_down( 32 ) )
 			{
-				this.vy = -10;
+				this.vy = -15;
 			}
 		}
 		
@@ -25,7 +27,7 @@ var Player = ActiveObject.extend( {
 			}
 			else
 			{
-				this.vx = -5;
+				this.vx = -6;
 			}
 		}
 		else if( Game.input_manager.is_key_down( 39 ) )
@@ -36,12 +38,8 @@ var Player = ActiveObject.extend( {
 			}
 			else
 			{
-				this.vx = 5;
+				this.vx = 6;
 			}
-		}
-		else
-		{
-			this.vx = 0;
 		}
 		
 		this.move();
