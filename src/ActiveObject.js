@@ -5,8 +5,9 @@ var ActiveObject = Base.extend( {
 		this.vy = 1;
 		this.vx = 0;
 		this.gravity = 20;
-		this.weight = 0.4;
-		this.vx_damage = 0;
+		this.weight = 0.9;
+		this.bounce_factor = 0;
+		this.vx_dmg = 0;
 	},
 	set_texture: function( path )
 	{
@@ -52,7 +53,7 @@ var ActiveObject = Base.extend( {
 		}
 		
 		this.sprite.position.y += this.vy;
-		this.sprite.position.x += this.vx;
+		this.sprite.position.x += this.vx + this.vx_dmg;
 	}
 	
 } );
