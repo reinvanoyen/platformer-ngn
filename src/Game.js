@@ -6,10 +6,11 @@ var Game = {
 	},
 	create: function()
 	{
-		this.stage = new PIXI.Stage( 0x66FF99 );
-		this.renderer = PIXI.autoDetectRenderer( 800, 600 );
+		this.stage = new PIXI.Stage( 0x2a353c );
+		this.renderer = PIXI.autoDetectRenderer( window.innerWidth, window.innerHeight );
 		
 		this.input_manager = new InputManager;
+		this.hud = new Hud;
 		this.world = new World;
 		
 		document.body.appendChild( this.renderer.view );
@@ -29,6 +30,7 @@ var Game = {
 	},
 	update: function()
 	{
+		this.hud.update();
 		this.world.update();
 	},
 	draw: function()
