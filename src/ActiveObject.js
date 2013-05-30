@@ -14,7 +14,6 @@ var ActiveObject = Base.extend( {
 	},
 	set_position: function( x, y )
 	{
-		console.log( this.texture );
 		if( this.sprite )
 		{
 			this.sprite.position.x = x;
@@ -25,18 +24,19 @@ var ActiveObject = Base.extend( {
 	{
 		this.move();
 	},
-	draw_to_stage: function( stage )
+	draw: function( stage )
 	{
 		stage.addChild( this.sprite );
 	},
 	move: function()
 	{
 		// Put gravity into effect
-		if( this.vy < this.gravity )
+		if( this.vy < this.gravity && this.vy !== 0 )
 		{
 			this.vy += this.weight;
 		}
 		
 		this.sprite.position.y += this.vy;
+		this.sprite.position.x += this.vx;
 	}
 } );
