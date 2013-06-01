@@ -7,14 +7,14 @@ var World = Base.extend( {
 		
 		var that = this;
 		
-		var prompt = window.prompt( 'Load level', 'example_1' );
+		var prompt = window.prompt( 'Load level', 'curvy' );
 		
 		if( prompt !== null )
 		{
 			this.level.load( prompt, function()
 			{
 				that.level.draw();
-				that.active_objects.add( 'player', new Player( 300, 0 ) );
+				that.active_objects.add( 'player', new Player( that.level.data.spawn.x, that.level.data.spawn.y ) );
 				that.collision_observer = new CollisionObserver;
 			} );
 		}
