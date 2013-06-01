@@ -1,6 +1,6 @@
 var Level = Base.extend( {
 	
-	level_data: {},
+	data: {},
 	load: function( level, callback )
 	{
 		var that = this;
@@ -10,7 +10,7 @@ var Level = Base.extend( {
 			dataType: 'json',
 			success: function( data )
 			{
-				that.level_data = data;
+				that.data = data;
 				that.is_loaded = true;
 				callback();
 			}
@@ -25,9 +25,25 @@ var Level = Base.extend( {
 	{
 		if( this.is_loaded )
 		{
-			for( i = 0; i < this.level_data.coordinates.length; i++ )
+			for( x in this.data.collision_data )
 			{
-				point = new PointSprite( this.level_data.coordinates[ i ].x, this.level_data.coordinates[ i ].y );
+				var x = parseInt( x );
+				
+				for( y in this.data.collision_data[ x ] )
+				{
+					var y = parseInt( y );
+					
+					var line_data = this.data.collision_data[ x ][ y ];
+					
+					var ax = (x + line_data[0]) * this.data.grid_size;
+					var ay = (y + line_data[1]) * this.data.grid_size;
+					
+					var bx = (x + line_data[2]) * this.data.grid_size;
+					var by = (y + line_data[3]) * this.data.grid_size;
+					
+					var point = new PointSprite( ax, ay );
+					var point = new PointSprite( bx, by );
+				}
 			}
 		}
 	}
