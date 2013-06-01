@@ -7,13 +7,16 @@ var CollisionObserver = Base.extend( {
 	},
 	check_collisions: function()
 	{
-		this.check_player_vs_level();
+		var that = this;
+		Game.world.active_objects.each( function( obj ) {
+			that.check_active_object_vs_level( obj );
+		} );
 	},
-	check_player_vs_level: function()
+	check_active_object_vs_level: function( active_object )
 	{
 		if( this.level.is_loaded )
 		{
-			var c = this.player.get_position();
+			var c = active_object.get_position();
 			
 			var grid_x = Math.floor( c.x / this.level.data.grid_size );
 			var grid_y = Math.floor( c.y / this.level.data.grid_size );
@@ -43,18 +46,18 @@ var CollisionObserver = Base.extend( {
 						// Check if we need to slide
 						if( slope_m < -1 || slope_m > 1 )
 						{
-							this.player.vx_dmg = slope_m*2;
+							active_object.vx_dmg = slope_m*2;
 						}
 						else
 						{
-							this.player.vx_dmg = 0;
+							active_object.vx_dmg = 0;
 						}
 						
 						// Bounce the object
-						this.player.vy = -Math.floor( this.player.vy * this.player.bounce_factor );
+						active_object.vy = -Math.floor( active_object.vy * active_object.bounce_factor );
 						
 						// Set the player position to where it intersected with the line
-						this.player.sprite.position.y = interception;
+						active_object.sprite.position.y = interception;
 					}
 					
 				}
