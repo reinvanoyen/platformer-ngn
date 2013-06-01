@@ -1,0 +1,75 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	background-color: black;
+	cursor: url(cursor.png), default;
+}
+
+#toolbar
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	background-color: #444;
+}
+
+#toolbar button
+{
+	float: left;
+	border: none;
+}
+
+#grid
+{
+	width: 100%;
+	height: 100%;
+}
+
+.collision_tile
+{
+	position: absolute;
+}
+
+.collision_tile:hover
+{
+	background-color: rgba( 255, 255, 255, 0.1 );
+}
+
+.collision_tile.incomplete
+{
+	background-color: rgba( 255, 0, 0, 0.1 );
+}
+
+.collision_tile.complete
+{
+	background-color: rgba( 0, 255, 0, 0.1 );
+}
+
+.node_cursor
+{
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 3px;
+	height: 3px;
+	background-color: white;
+}
+
+.collision_tile:hover .node_cursor
+{
+	display: block;
+}
+
+.collision_node
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 2px;
+	background-color: red;
+}
