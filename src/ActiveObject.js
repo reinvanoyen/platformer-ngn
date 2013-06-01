@@ -5,14 +5,13 @@ var ActiveObject = Base.extend( {
 		this.vy = 1;
 		this.vx = 0;
 		this.gravity = 20;
-		this.weight = 0.9;
+		this.weight = 1;
 		this.bounce_factor = 0.3;
 		this.vx_dmg = 0;
 	},
-	set_texture: function( path )
+	set_texture: function( texture )
 	{
-		this.texture = PIXI.Texture.fromImage( path );
-		this.sprite = new PIXI.Sprite( this.texture );
+		this.sprite = new PIXI.Sprite( texture );
 		this.sprite.anchor.x = 0.5;
 		this.sprite.anchor.y = 1;
 	},
