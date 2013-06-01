@@ -9,11 +9,25 @@
 	<script src="../../3p/base.js"></script>
 	<script src="src/Editor.js"></script>
 	<script src="src/CollisionTile.js"></script>
+	<script src="src/Layer.js"></script>
 	<script src="src/CollisionLayer.js"></script>
+	<script src="src/SpawnLayer.js"></script>
 	<script>
 		$( document ).ready( function()
 		{
-			Editor.create( 100, 50 );
+			var grid_size = prompt( 'Grid size', 100 );
+			if( grid_size !== null )
+			{
+				var width = prompt( 'Width', 100 );
+				if( width !== null )
+				{
+					var height = prompt( 'Height', 50 );
+					if( height !== null )
+					{
+						Editor.create( width, height, grid_size );
+					}
+				}
+			}
 		} );
 	</script>
 </body>

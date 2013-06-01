@@ -1,29 +1,22 @@
-var CollisionLayer = Base.extend( {
+var CollisionLayer = Layer.extend( {
 	
 	collision_data: {},
 	collision_tiles: [],
-	constructor: function( amount, grid_size )
+	constructor: function( width, height, grid_size )
 	{
-		this.grid_size = parseInt( grid_size );
-		
-		this.$grid = $( '<div>' ).attr( 'id', 'grid' ).css( {
-			width: amount * this.grid_size,
-			height: amount * this.grid_size
-		} ).appendTo( $( 'body' ) );
+		this.base( width, height, grid_size );
 		
 		var that = this;
 		
-		for( x = 0; x < amount; x++ )
+		for( x = 0; x < width; x++ )
 		{
-			for( y = 0; y < amount; y++ )
+			for( y = 0; y < height; y++ )
 			{
 				var tile = new CollisionTile( x, y, this.grid_size );
-				tile.$tile.appendTo( this.$grid );
+				tile.$tile.appendTo( this.$layer );
 				this.collision_tiles.push( tile );
 			}
 		}
-		
-		var that = this;
 	},
 	export: function()
 	{
@@ -51,14 +44,6 @@ var CollisionLayer = Base.extend( {
 		}
 		
 		return this.collision_data;
-	},
-	show: function()
-	{
-		this.$grid.show();
-	},
-	hide: function()
-	{
-		this.$grid.hide();
 	}
 	
 } );

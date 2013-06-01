@@ -2,7 +2,8 @@ body
 {
 	margin: 0;
 	padding: 0;
-	background-color: black;
+	background-color: white;
+	background-image: url( bg.png );
 	cursor: url(cursor.png), default;
 }
 
@@ -14,6 +15,7 @@ body
 	width: 100%;
 	height: 30px;
 	background-color: #444;
+	z-index: 10000;
 }
 
 #toolbar button
@@ -22,10 +24,25 @@ body
 	border: none;
 }
 
-#grid
+#toolbar button.active
 {
+	background-color: white;
+}
+
+.layer
+{
+	position: absolute;
 	width: 100%;
 	height: 100%;
+}
+
+.spawn_player
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.6;
+	border: 1px dotted black;
 }
 
 .collision_tile
@@ -35,17 +52,24 @@ body
 
 .collision_tile:hover
 {
-	background-color: rgba( 255, 255, 255, 0.1 );
+	background-color: rgba( 0, 0, 0, 0.1 );
 }
 
 .collision_tile.incomplete
 {
-	background-color: rgba( 255, 0, 0, 0.1 );
+	background-color: rgba( 255, 0, 0, 0.3 );
 }
 
 .collision_tile.complete
 {
-	background-color: rgba( 0, 255, 0, 0.1 );
+	background-color: rgba( 0, 175, 0, 0.5 );
+}
+
+.collision_line
+{
+	transform-origin: 0 100%;
+	height: 3px;
+	background-color black;
 }
 
 .node_cursor
@@ -56,7 +80,7 @@ body
 	left: 0;
 	width: 3px;
 	height: 3px;
-	background-color: white;
+	background-color: blue;
 }
 
 .collision_tile:hover .node_cursor
