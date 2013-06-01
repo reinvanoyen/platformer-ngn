@@ -1,0 +1,5 @@
+{
+	"texture": "football.png",
+	"bounce_factor": 0.8,
+	"weight": 0.4
+}

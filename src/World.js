@@ -15,8 +15,6 @@ var World = Base.extend( {
 			this.level.load( prompt, function()
 			{
 				that.level.draw();
-				that.active_objects.add( 'player', new Player( that.level.data.spawn.x, that.level.data.spawn.y ) );
-				that.active_objects.get( 'player' ).draw( that.level.level_stage );
 				that.collision_observer = new CollisionObserver;
 			} );
 		}

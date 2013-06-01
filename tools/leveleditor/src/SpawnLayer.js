@@ -10,7 +10,7 @@ var SpawnLayer = Layer.extend( {
 			that.process_click( e );
 		} );
 		
-		this.$player = $( '<img>' ).attr( 'src', '../../sprites/player/idle_01.png' ).addClass( 'spawn_player' ).css( {
+		this.$player = $( '<img>' ).attr( 'src', '../../sprites/player/idle_01.png' ).addClass( 'prop' ).css( {
 			top: this.spawn_data.y,
 			left: this.spawn_data.x
 		} ).hide().appendTo( this.$layer );

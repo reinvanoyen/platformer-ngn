@@ -15,5 +15,12 @@ var Storage = Base.extend( {
 		{
 			this._objects[ key ].update();
 		}
+	},
+	each: function( callback )
+	{
+		for( key in this._objects )
+		{
+			callback( this._objects[ key ] );
+		}
 	}
 } );

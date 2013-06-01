@@ -36,13 +36,18 @@ body
 	height: 100%;
 }
 
-.spawn_player
+.prop
 {
 	position: absolute;
 	top: 0;
 	left: 0;
 	opacity: 0.6;
 	border: 1px dotted black;
+}
+
+.prop:hover
+{
+	opacity: 1;
 }
 
 .collision_tile
