@@ -30,10 +30,9 @@ var Player = AnimatedObject.extend( {
 			WALKING: [ 0, 15 ]
 		} );
 		
-		this.set_position( x, y );
+		this.set_position( x, y);
 		this.direction = 1;
 		this.movement_speed = 8;
-		this.draw( Game.stage );
 	},
 	update: function()
 	{
@@ -43,7 +42,7 @@ var Player = AnimatedObject.extend( {
 		{
 			if( Game.input_manager.is_key_down( 32 ) )
 			{
-				this.vy = -15;
+				this.vy = -23;
 			}
 		}
 		

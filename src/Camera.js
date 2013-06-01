@@ -1,10 +1,10 @@
 var Camera = Base.extend( {
 
 	center: { x: 0, y: 0 } ,
-	set_center: function( x, y )
+	follow: function( active_object )
 	{
-		this.center.x = x;
-		this.center.y = y;
+		this.center.x = active_object.sprite.position.x;
+		this.center.y = active_object.sprite.position.y;
 	}
 
 } );

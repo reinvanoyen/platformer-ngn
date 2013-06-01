@@ -6,8 +6,10 @@ var Game = {
 	},
 	create: function()
 	{
+		this.width = window.innerWidth;
+		this.height = window.innerHeight;
 		this.stage = new PIXI.Stage( 0x2a353c );
-		this.renderer = PIXI.autoDetectRenderer( window.innerWidth, window.innerHeight );
+		this.renderer = PIXI.autoDetectRenderer( this.width, this.height );
 		
 		this.input_manager = new InputManager;
 		this.hud = new Hud;

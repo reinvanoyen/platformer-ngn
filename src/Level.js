@@ -19,10 +19,20 @@ var Level = Base.extend( {
 	},
 	update: function()
 	{
-		// Nothing to see here, for now levels are non-dynamic
+		if( this.level_stage )
+		{
+			this.level_stage.position.x = -( Game.world.camera.center.x - Game.width/2 );
+			this.level_stage.position.y = -( Game.world.camera.center.y - Game.height/2 );
+		}
 	},
 	draw: function()
 	{
+		this.level_stage = new PIXI.DisplayObjectContainer;
+		this.level_stage.position.x = 0;
+		this.level_stage.position.y = 0;
+		
+		console.log( 'lolo' );
+		
 		if( this.is_loaded )
 		{
 			for( x in this.data.collision_data )
@@ -42,10 +52,15 @@ var Level = Base.extend( {
 					var by = (y + line_data[3]) * this.data.grid_size;
 					
 					var point = new PointSprite( ax, ay );
+					point.draw( this.level_stage );
 					var point = new PointSprite( bx, by );
+					point.draw( this.level_stage );
 				}
 			}
 		}
+		
+		// Add the level to the main stage
+		Game.stage.addChild( this.level_stage );
 	}
 	
 } );

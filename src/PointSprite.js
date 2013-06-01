@@ -8,7 +8,6 @@ var PointSprite = ActiveObject.extend( {
 		
 		this.set_texture( texture );
 		this.set_position( x, y );
-		this.draw( Game.stage );
 	},
 	update: function()
 	{

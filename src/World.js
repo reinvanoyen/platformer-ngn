@@ -4,10 +4,11 @@ var World = Base.extend( {
 	{
 		this.level = new Level;
 		this.active_objects = new ActiveObjectStorage;
+		this.camera = new Camera;
 		
 		var that = this;
 		
-		var prompt = window.prompt( 'Load level', 'curvy' );
+		var prompt = window.prompt( 'Load level', 'example' );
 		
 		if( prompt !== null )
 		{
@@ -15,6 +16,7 @@ var World = Base.extend( {
 			{
 				that.level.draw();
 				that.active_objects.add( 'player', new Player( that.level.data.spawn.x, that.level.data.spawn.y ) );
+				that.active_objects.get( 'player' ).draw( that.level.level_stage );
 				that.collision_observer = new CollisionObserver;
 			} );
 		}
@@ -25,6 +27,7 @@ var World = Base.extend( {
 		{
 			this.level.update();
 			this.active_objects.update_all();
+			this.camera.follow( this.active_objects.get( 'player' ) );
 			this.collision_observer.check_collisions();
 		}
 	}
