@@ -4,10 +4,27 @@ var ActiveObject = Base.extend( {
 	{
 		this.vy = 1;
 		this.vx = 0;
-		this.gravity = 20;
-		this.weight = 1;
-		this.bounce_factor = 0.3;
+		this.gravity = 25;
+		this.weight = 0.9;
+		this.bounce_factor = 0;
 		this.vx_dmg = 0;
+	},
+	load_template: function( data )
+	{
+		if( data.texture )
+		{
+			var texture = PIXI.Texture.fromImage( 'sprites/' + data.texture );
+			this.set_texture( texture );
+		}
+		if( data.bounce_factor )
+		{
+			this.bounce_factor = data.bounce_factor;
+		}
+		
+		if( data.weight )
+		{
+			this.weight = data.weight;
+		}
 	},
 	set_texture: function( texture )
 	{
