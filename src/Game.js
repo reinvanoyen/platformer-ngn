@@ -2,7 +2,7 @@ var Game = {
 	
 	settings:
 	{
-		fps: 60
+		fps: 75
 	},
 	create: function()
 	{
